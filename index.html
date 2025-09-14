@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKHU - University Recommendation Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-book"></i>
+                <span>OKHU</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active" data-tab="recommender">Recommender</a>
+                <a href="#" class="nav-link" data-tab="search">Search</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero">
+                <h1>Find Your Perfect University & Scholarships</h1>
+                <p>Discover the best universities and available scholarships tailored to your academic profile and aspirations</p>
+            </div>
+
+            <!-- Recommender Tab -->
+            <div id="recommender-tab" class="tab-content active">
+                <div class="form-container">
+                    <h2>University & Scholarship Recommender</h2>
+                    <p>Tell us about yourself and we'll recommend the best universities and available scholarships for you</p>
+                    
+                    <form id="recommender-form" class="recommender-form">
+                        <div class="form-grid">
+                            <!-- CV Upload -->
+                            <div class="form-group">
+                                <label for="cv-upload">CV Upload</label>
+                                <div class="file-upload">
+                                    <input type="file" id="cv-upload" accept=".pdf,.doc,.docx">
+                                    <div class="file-upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload CV</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transcript Upload -->
+                            <div class="form-group">
+                                <label for="transcript-upload">Transcript Upload</label>
+                                <div class="file-upload">
+                                    <input type="file" id="transcript-upload" accept=".pdf,.doc,.docx">
+                                    <div class="file-upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload Transcript</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Country -->
+                            <div class="form-group">
+                                <label for="country">Country Preference</label>
+                                <select id="country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="usa">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="canada">Canada</option>
+                                    <option value="australia">Australia</option>
+                                    <option value="germany">Germany</option>
+                                    <option value="france">France</option>
+                                    <option value="netherlands">Netherlands</option>
+                                    <option value="sweden">Sweden</option>
+                                    <option value="switzerland">Switzerland</option>
+                                    <option value="japan">Japan</option>
+                                    <option value="south-korea">South Korea</option>
+                                    <option value="singapore">Singapore</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Education Language -->
+                            <div class="form-group">
+                                <label for="education-language">Preferred Education Language</label>
+                                <select id="education-language" required>
+                                    <option value="">Select Language</option>
+                                    <option value="english">English</option>
+                                    <option value="french">French</option>
+                                    <option value="german">German</option>
+                                    <option value="spanish">Spanish</option>
+                                    <option value="chinese">Chinese</option>
+                                    <option value="japanese">Japanese</option>
+                                    <option value="korean">Korean</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- GPA -->
+                            <div class="form-group">
+                                <label for="gpa">GPA (0.0 - 4.0)</label>
+                                <input type="number" id="gpa" min="0" max="4" step="0.1" placeholder="3.5" required>
+                            </div>
+
+                            <!-- Speciality -->
+                            <div class="form-group">
+                                <label for="speciality">Field of Study</label>
+                                <select id="speciality" required>
+                                    <option value="">Select Field</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="medicine">Medicine</option>
+                                    <option value="business">Business Administration</option>
+                                    <option value="law">Law</option>
+                                    <option value="arts">Arts & Humanities</option>
+                                    <option value="social-sciences">Social Sciences</option>
+                                    <option value="natural-sciences">Natural Sciences</option>
+                                    <option value="mathematics">Mathematics</option>
+                                    <option value="psychology">Psychology</option>
+                                    <option value="economics">Economics</option>
+                                    <option value="architecture">Architecture</option>
+                                    <option value="design">Design</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Language Certificate Upload -->
+                            <div class="form-group">
+                                <label for="language-certificate">Language Certificate Upload</label>
+                                <div class="file-upload">
+                                    <input type="file" id="language-certificate" accept=".pdf,.doc,.docx,.jpg,.png">
+                                    <div class="file-upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Test Scores -->
+                            <div class="form-group">
+                                <label for="test-scores">Standardized Test Scores</label>
+                                <div class="test-scores-container">
+                                    <div class="test-score-row">
+                                        <label for="sat-score">SAT Score</label>
+                                        <input type="number" id="sat-score" min="400" max="1600" placeholder="1400">
+                                    </div>
+                                    <div class="test-score-row">
+                                        <label for="act-score">ACT Score</label>
+                                        <input type="number" id="act-score" min="1" max="36" placeholder="32">
+                                    </div>
+                                    <div class="test-score-row">
+                                        <label for="gre-score">GRE Score</label>
+                                        <input type="number" id="gre-score" min="260" max="340" placeholder="320">
+                                    </div>
+                                    <div class="test-score-row">
+                                        <label for="gmat-score">GMAT Score</label>
+                                        <input type="number" id="gmat-score" min="200" max="800" placeholder="650">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Language Test Scores -->
+                            <div class="form-group">
+                                <label for="language-scores">Language Test Scores</label>
+                                <div class="test-scores-container">
+                                    <div class="test-score-row">
+                                        <label for="toefl-score">TOEFL Score</label>
+                                        <input type="number" id="toefl-score" min="0" max="120" placeholder="100">
+                                    </div>
+                                    <div class="test-score-row">
+                                        <label for="ielts-score">IELTS Score</label>
+                                        <input type="number" id="ielts-score" min="0" max="9" step="0.5" placeholder="7.5">
+                                    </div>
+                                    <div class="test-score-row">
+                                        <label for="duolingo-score">Duolingo Score</label>
+                                        <input type="number" id="duolingo-score" min="10" max="160" placeholder="120">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Academic Level -->
+                            <div class="form-group">
+                                <label for="academic-level">Current Academic Level</label>
+                                <select id="academic-level" required>
+                                    <option value="">Select Level</option>
+                                    <option value="high-school">High School Student</option>
+                                    <option value="undergraduate">Undergraduate Student</option>
+                                    <option value="graduate">Graduate Student</option>
+                                    <option value="professional">Working Professional</option>
+                                    <option value="gap-year">Gap Year Student</option>
+                                </select>
+                            </div>
+
+                            <!-- Expected Start Date -->
+                            <div class="form-group">
+                                <label for="start-date">Preferred Start Date</label>
+                                <select id="start-date" required>
+                                    <option value="">Select Start Date</option>
+                                    <option value="fall-2024">Fall 2024</option>
+                                    <option value="spring-2025">Spring 2025</option>
+                                    <option value="fall-2025">Fall 2025</option>
+                                    <option value="spring-2026">Spring 2026</option>
+                                    <option value="fall-2026">Fall 2026</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+
+                            <!-- Budget Range -->
+                            <div class="form-group">
+                                <label for="budget">Annual Budget Range (USD)</label>
+                                <select id="budget" required>
+                                    <option value="">Select Budget Range</option>
+                                    <option value="under-10000">Under $10,000</option>
+                                    <option value="10000-25000">$10,000 - $25,000</option>
+                                    <option value="25000-50000">$25,000 - $50,000</option>
+                                    <option value="50000-75000">$50,000 - $75,000</option>
+                                    <option value="75000-100000">$75,000 - $100,000</option>
+                                    <option value="over-100000">Over $100,000</option>
+                                    <option value="scholarship-dependent">Scholarship Dependent</option>
+                                </select>
+                            </div>
+
+                            <!-- Work Experience -->
+                            <div class="form-group">
+                                <label for="work-experience">Work Experience (Years)</label>
+                                <select id="work-experience">
+                                    <option value="">Select Experience</option>
+                                    <option value="0">No Experience</option>
+                                    <option value="1-2">1-2 Years</option>
+                                    <option value="3-5">3-5 Years</option>
+                                    <option value="6-10">6-10 Years</option>
+                                    <option value="over-10">Over 10 Years</option>
+                                </select>
+                            </div>
+
+                            <!-- Research Experience -->
+                            <div class="form-group">
+                                <label for="research-experience">Research Experience</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="undergraduate-research" value="undergraduate">
+                                        <span class="checkmark"></span>
+                                        Undergraduate Research
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="graduate-research" value="graduate">
+                                        <span class="checkmark"></span>
+                                        Graduate Research
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="published-papers" value="published">
+                                        <span class="checkmark"></span>
+                                        Published Papers
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="conference-presentations" value="conferences">
+                                        <span class="checkmark"></span>
+                                        Conference Presentations
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Extracurricular Activities -->
+                            <div class="form-group">
+                                <label for="extracurriculars">Extracurricular Activities & Leadership</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="student-government" value="student-government">
+                                        <span class="checkmark"></span>
+                                        Student Government
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="clubs-societies" value="clubs">
+                                        <span class="checkmark"></span>
+                                        Clubs & Societies
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="volunteer-work" value="volunteer">
+                                        <span class="checkmark"></span>
+                                        Volunteer Work
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="sports" value="sports">
+                                        <span class="checkmark"></span>
+                                        Sports
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="arts-culture" value="arts">
+                                        <span class="checkmark"></span>
+                                        Arts & Culture
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="entrepreneurship" value="entrepreneurship">
+                                        <span class="checkmark"></span>
+                                        Entrepreneurship
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Awards & Honors -->
+                            <div class="form-group">
+                                <label for="awards">Awards & Honors</label>
+                                <textarea id="awards" rows="3" placeholder="List any academic awards, scholarships, honors, or recognitions you've received..."></textarea>
+                            </div>
+
+                            <!-- Personal Statement -->
+                            <div class="form-group">
+                                <label for="personal-statement">Personal Statement/Career Goals</label>
+                                <textarea id="personal-statement" rows="4" placeholder="Briefly describe your career goals, motivation for studying abroad, and what you hope to achieve..."></textarea>
+                            </div>
+
+                            <!-- Additional Documents -->
+                            <div class="form-group">
+                                <label for="additional-documents">Additional Documents</label>
+                                <div class="file-upload">
+                                    <input type="file" id="additional-documents" accept=".pdf,.doc,.docx" multiple>
+                                    <div class="file-upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload additional documents (Portfolio, Research Papers, etc.)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="recommend-btn">
+                            <i class="fas fa-magic"></i>
+                            Get Recommendations
+                        </button>
+                        
+                        <!-- Debug Test Button -->
+                        <button type="button" id="test-api-btn" class="recommend-btn" style="margin-left: 10px; background: #28a745;">
+                            <i class="fas fa-bug"></i>
+                            Test API Connection
+                        </button>
+                    </form>
+
+                    <!-- Results Section -->
+                    <div id="recommendations-results" class="results-section" style="display: none;">
+                        <div class="results-tabs">
+                            <button class="results-tab active" data-results-tab="recommender">
+                                <i class="fas fa-graduation-cap"></i>
+                                Recommender
+                            </button>
+                            <button class="results-tab" data-results-tab="mutuality">
+                                <i class="fas fa-users"></i>
+                                Mutuality
+                            </button>
+                        </div>
+                        
+                        <!-- Recommender Tab Content -->
+                        <div id="recommender-results" class="results-tab-content active">
+                            <h3>Recommended Universities</h3>
+                            <div id="recommendations-list" class="recommendations-list">
+                                <!-- Results will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Mutuality Tab Content -->
+                        <div id="mutuality-results" class="results-tab-content">
+                            <div class="mutuality-header">
+                                <h3>Find People with Similar Backgrounds</h3>
+                                <p>Connect with professionals who have similar academic backgrounds and see where they pursued their master's degrees</p>
+                                
+                                <!-- LinkedIn Authentication -->
+                                <div id="linkedin-auth-section" class="linkedin-auth">
+                                    <div class="auth-prompt">
+                                        <i class="fab fa-linkedin"></i>
+                                        <h4>Connect Your LinkedIn Account</h4>
+                                        <p>To find people with similar backgrounds, please connect your LinkedIn account</p>
+                                        <button id="linkedin-connect-btn" class="linkedin-btn">
+                                            <i class="fab fa-linkedin"></i>
+                                            Connect LinkedIn
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- LinkedIn Connected State -->
+                                <div id="linkedin-connected-section" class="linkedin-connected" style="display: none;">
+                                    <div class="connected-status">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>LinkedIn Connected</span>
+                                        <button id="linkedin-disconnect-btn" class="disconnect-btn">Disconnect</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mutuality Results -->
+                            <div id="mutuality-list" class="mutuality-list" style="display: none;">
+                                <div class="mutuality-filters">
+                                    <h4>Filter by Similarity</h4>
+                                    <div class="filter-options">
+                                        <label class="filter-option">
+                                            <input type="checkbox" id="filter-gpa" checked>
+                                            <span>Similar GPA Range</span>
+                                        </label>
+                                        <label class="filter-option">
+                                            <input type="checkbox" id="filter-field" checked>
+                                            <span>Same Field of Study</span>
+                                        </label>
+                                        <label class="filter-option">
+                                            <input type="checkbox" id="filter-country" checked>
+                                            <span>Same Country Preference</span>
+                                        </label>
+                                        <label class="filter-option">
+                                            <input type="checkbox" id="filter-experience" checked>
+                                            <span>Similar Work Experience</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div id="mutuality-profiles" class="mutuality-profiles">
+                                    <!-- Mutuality profiles will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Tab -->
+            <div id="search-tab" class="tab-content">
+                <div class="search-container">
+                    <h2>University Search</h2>
+                    <p>Search for specific universities and get detailed information</p>
+                    
+                    <div class="search-box">
+                        <input type="text" id="university-search" placeholder="Enter university name (e.g., MIT, Harvard, Oxford)">
+                        <button id="search-btn">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                        <button id="test-search-btn" class="search-btn" style="background: #17a2b8; margin-left: 10px;">
+                            <i class="fas fa-bug"></i>
+                            Test Search
+                        </button>
+                    </div>
+
+                    <!-- Search Results -->
+                    <div id="search-results" class="search-results" style="display: none;">
+                        <div class="university-header">
+                            <h3 id="university-name"></h3>
+                            <div class="university-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="university-location"></span>
+                            </div>
+                        </div>
+
+                        <div class="tabs-container">
+                            <div class="sub-tabs">
+                                <button class="sub-tab active" data-subtab="details">Details</button>
+                                <button class="sub-tab" data-subtab="community">Community</button>
+                            </div>
+
+                            <!-- Details Tab -->
+                            <div id="details-subtab" class="sub-tab-content active">
+                                <div class="university-info">
+                                    <div class="info-section">
+                                        <h4>University Overview</h4>
+                                        <p id="university-overview">Loading university information...</p>
+                                    </div>
+                                    
+                                    <div class="info-section">
+                                        <h4>Country Information</h4>
+                                        <p id="country-info">Loading country information...</p>
+                                    </div>
+                                    
+                                    <div class="info-section">
+                                        <h4>Application Requirements</h4>
+                                        <div id="application-requirements">
+                                            <ul>
+                                                <li>Academic transcripts</li>
+                                                <li>Language proficiency test scores</li>
+                                                <li>Personal statement</li>
+                                                <li>Letters of recommendation</li>
+                                                <li>Application fee</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Community Tab -->
+                            <div id="community-subtab" class="sub-tab-content">
+                                <div class="community-info">
+                                    <div class="social-section">
+                                        <h4>Reddit Discussions</h4>
+                                        <div id="reddit-posts" class="social-posts">
+                                            <p>Loading Reddit discussions...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="social-section">
+                                        <h4>Social Media Mentions</h4>
+                                        <div id="social-mentions" class="social-posts">
+                                            <p>Loading social media mentions...</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="social-section">
+                                        <h4>Student Reviews</h4>
+                                        <div id="student-reviews" class="social-posts">
+                                            <p>Loading student reviews...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 OKHU.az - Your University Discovery Platform</p>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing your request...</p>
+        </div>
+    </div>
+
+    <!-- Application Modal -->
+    <div id="application-modal" class="application-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-university-name">Apply to University</h2>
+                <button id="close-modal" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="application-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Personal Info</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Academic Info</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Documents</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Review & Submit</div>
+                    </div>
+                </div>
+
+                <form id="application-form" class="application-form">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="app-first-name">First Name *</label>
+                                <input type="text" id="app-first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-last-name">Last Name *</label>
+                                <input type="text" id="app-last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="app-email">Email Address *</label>
+                                <input type="email" id="app-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-phone">Phone Number *</label>
+                                <input type="tel" id="app-phone" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="app-date-of-birth">Date of Birth *</label>
+                                <input type="date" id="app-date-of-birth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-nationality">Nationality *</label>
+                                <select id="app-nationality" required>
+                                    <option value="">Select Nationality</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="NL">Netherlands</option>
+                                    <option value="SE">Sweden</option>
+                                    <option value="CH">Switzerland</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="KR">South Korea</option>
+                                    <option value="SG">Singapore</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-address">Address *</label>
+                            <textarea id="app-address" rows="3" required placeholder="Street address, City, State, Country, Postal Code"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Academic Information -->
+                    <div class="form-step" data-step="2">
+                        <h3>Academic Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="app-current-gpa">Current GPA *</label>
+                                <input type="number" id="app-current-gpa" min="0" max="4" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-field-of-study">Field of Study *</label>
+                                <select id="app-field-of-study" required>
+                                    <option value="">Select Field</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="medicine">Medicine</option>
+                                    <option value="business">Business Administration</option>
+                                    <option value="law">Law</option>
+                                    <option value="arts">Arts & Humanities</option>
+                                    <option value="social-sciences">Social Sciences</option>
+                                    <option value="natural-sciences">Natural Sciences</option>
+                                    <option value="mathematics">Mathematics</option>
+                                    <option value="psychology">Psychology</option>
+                                    <option value="economics">Economics</option>
+                                    <option value="architecture">Architecture</option>
+                                    <option value="design">Design</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="app-degree-level">Degree Level *</label>
+                                <select id="app-degree-level" required>
+                                    <option value="">Select Level</option>
+                                    <option value="bachelor">Bachelor's</option>
+                                    <option value="master">Master's</option>
+                                    <option value="phd">PhD</option>
+                                    <option value="certificate">Certificate</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="app-start-semester">Preferred Start Semester *</label>
+                                <select id="app-start-semester" required>
+                                    <option value="">Select Semester</option>
+                                    <option value="fall-2024">Fall 2024</option>
+                                    <option value="spring-2025">Spring 2025</option>
+                                    <option value="fall-2025">Fall 2025</option>
+                                    <option value="spring-2026">Spring 2026</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-test-scores">Test Scores</label>
+                            <div class="test-scores-grid">
+                                <div class="test-score-item">
+                                    <label for="app-sat">SAT Score</label>
+                                    <input type="number" id="app-sat" min="400" max="1600" placeholder="1400">
+                                </div>
+                                <div class="test-score-item">
+                                    <label for="app-gre">GRE Score</label>
+                                    <input type="number" id="app-gre" min="260" max="340" placeholder="320">
+                                </div>
+                                <div class="test-score-item">
+                                    <label for="app-toefl">TOEFL Score</label>
+                                    <input type="number" id="app-toefl" min="0" max="120" placeholder="100">
+                                </div>
+                                <div class="test-score-item">
+                                    <label for="app-ielts">IELTS Score</label>
+                                    <input type="number" id="app-ielts" min="0" max="9" step="0.5" placeholder="7.5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="app-personal-statement">Personal Statement *</label>
+                            <textarea id="app-personal-statement" rows="5" required placeholder="Tell us about your academic goals, motivation for studying at this university, and how this program aligns with your career aspirations..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Documents -->
+                    <div class="form-step" data-step="3">
+                        <h3>Required Documents</h3>
+                        <div class="documents-section">
+                            <div class="document-item required">
+                                <div class="document-info">
+                                    <h4>Academic Transcripts *</h4>
+                                    <p>Official transcripts from all previously attended institutions</p>
+                                </div>
+                                <div class="document-upload">
+                                    <input type="file" id="app-transcripts" accept=".pdf,.doc,.docx" multiple>
+                                    <div class="upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload Transcripts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="document-item required">
+                                <div class="document-info">
+                                    <h4>CV/Resume *</h4>
+                                    <p>Your current curriculum vitae or resume</p>
+                                </div>
+                                <div class="document-upload">
+                                    <input type="file" id="app-cv" accept=".pdf,.doc,.docx">
+                                    <div class="upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload CV/Resume</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="document-item required">
+                                <div class="document-info">
+                                    <h4>Language Proficiency Certificate *</h4>
+                                    <p>TOEFL, IELTS, or other recognized language test results</p>
+                                </div>
+                                <div class="document-upload">
+                                    <input type="file" id="app-language-cert" accept=".pdf,.doc,.docx,.jpg,.png">
+                                    <div class="upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload Certificate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="document-item">
+                                <div class="document-info">
+                                    <h4>Letters of Recommendation</h4>
+                                    <p>Academic or professional recommendation letters (optional)</p>
+                                </div>
+                                <div class="document-upload">
+                                    <input type="file" id="app-recommendations" accept=".pdf,.doc,.docx" multiple>
+                                    <div class="upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload Letters</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="document-item">
+                                <div class="document-info">
+                                    <h4>Portfolio/Work Samples</h4>
+                                    <p>Portfolio, research papers, or work samples (optional)</p>
+                                </div>
+                                <div class="document-upload">
+                                    <input type="file" id="app-portfolio" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                                    <div class="upload-display">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Upload Portfolio</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-step" data-step="4">
+                        <h3>Review Your Application</h3>
+                        <div class="review-section">
+                            <div class="review-item">
+                                <h4>University Information</h4>
+                                <div id="review-university-info"></div>
+                            </div>
+                            <div class="review-item">
+                                <h4>Personal Information</h4>
+                                <div id="review-personal-info"></div>
+                            </div>
+                            <div class="review-item">
+                                <h4>Academic Information</h4>
+                                <div id="review-academic-info"></div>
+                            </div>
+                            <div class="review-item">
+                                <h4>Documents</h4>
+                                <div id="review-documents"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="terms-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="app-terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" target="_blank">Terms and Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="prev-step" class="btn-secondary" style="display: none;">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <button id="next-step" class="btn-primary">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="submit-application" class="btn-success" style="display: none;">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Application
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Success Modal -->
+    <div id="application-success-modal" class="success-modal" style="display: none;">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Application Submitted Successfully!</h2>
+            <p>Your application has been submitted to the university. You will receive a confirmation email shortly.</p>
+            <div class="application-details">
+                <h3>Application Details</h3>
+                <div id="success-application-info"></div>
+            </div>
+            <div class="success-actions">
+                <button id="close-success-modal" class="btn-primary">Close</button>
+                <button id="track-application" class="btn-secondary">Track Application</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
